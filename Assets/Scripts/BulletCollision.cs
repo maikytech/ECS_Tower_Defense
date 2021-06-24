@@ -15,7 +15,7 @@ public class BulletCollision : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
-            UIManager.UpdateScore(1);
+           
         }
 
     }

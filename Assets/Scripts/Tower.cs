@@ -52,7 +52,6 @@ public class Tower : MonoBehaviour
     {
         var bulletGo = Instantiate(bullet, shootPosition.position, shootPosition.rotation);
         bulletGo.setBullet(currentTarget);
-        UIManager.UpdateScore(1);
     }
 
     private IEnumerator ShootTimer()

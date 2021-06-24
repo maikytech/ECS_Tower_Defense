@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
 
     [Header("Enemy Setup")]
+    public int score = 0;
     public float speedEnemy = 5;
     public float rotationSpeed = 5;
     public float wavesTime = 10.0f;
+    public bool isDead = false;
     public GameObject enemyPrefab;
     public Transform tower;
 
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        Score();
     }
 
     void EnemyIncrements()
@@ -76,6 +78,16 @@ public class GameManager : MonoBehaviour
         }
 
        numberOfEnemies += 10;
+    }
+
+    void Score()
+    {
+        if(isDead)
+        {
+            score++;
+            UIManager.UpdateScore(score);
+            isDead = false;
+        }
 
     }
 }
