@@ -6,6 +6,5 @@ using Unity.Mathematics;
 [GenerateAuthoringComponent]
 public struct EnemyData : IComponentData
 {
-    //public float enemySpeed2;
-    //public GameObject target;
+    public float enemySpeed2;
 }

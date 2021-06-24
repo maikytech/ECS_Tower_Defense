@@ -13,6 +13,7 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            GameManager.GM.Score();
             Destroy(other.gameObject);
             Destroy(gameObject);
            

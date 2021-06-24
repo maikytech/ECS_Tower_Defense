@@ -10,9 +10,10 @@ public class UIManager : MonoBehaviour
     //one in exitence. This is often referred to as a singleton design pattern. Other
     //scripts access this one through its public static methods.
 
-    static UIManager current;
+    public static UIManager current;
 
-    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOver;
     private void Awake()
     {
         if (current != null && current != this)
