@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
 
     [Header("Enemy Setup")]
-    public float enemySpeed;
+    public float speedEnemy = 5;
+    public float rotationSpeed = 5;
+    public float wavesTime = 10.0f;
     public GameObject enemyPrefab;
+    public Transform tower;
 
-    [Header("Spawning Setup")]
-    public int numberOfEnemies = 10;
+    [Header("Spawning Enemy")]
+    public int numberOfEnemies = 1;
 
     private EntityManager entityManager;
     private Entity enemyEntityPrefab;
@@ -35,42 +38,44 @@ public class GameManager : MonoBehaviour
         //enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(enemyPrefab, settings);
     }
 
-    void enemyIncrements()
+    private void Start()
     {
-        if (Input.GetKeyDown("space"))
+        InvokeRepeating("EnemyIncrements", wavesTime, wavesTime);
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    void EnemyIncrements()
+    {
+        if (numberOfEnemies < 100)
+        {
             AddEnemies(numberOfEnemies);
+        }
     }
 
     void AddEnemies(int amount)
     {
         for(int i = 0; i < amount; i++)
         {
-             float xInside = Random.Range(-40, 40);
-             float zInside = Random.Range(10, 24);
+             float xValue = Random.Range(-40, 40);
+             float zValue = Random.Range(10, 24);
 
-            float xOutside = Random.Range(40, 10);
-            float zOutside = Random.Range(0, 24);
-
-
-
-            Vector3 spawnPositionInside = new Vector3(xInside, 0.44f, zInside);
-            Vector3 spawnPositionLeft = new Vector3(-xOutside, 0.44f, zOutside);
-            Vector3 spawnPositionRight = new Vector3(xOutside, 0.44f, zOutside);
+            Vector3 spawnPosition = new Vector3(xValue, 0.44f, zValue);
             Quaternion spawnRotation = Quaternion.Euler(0f, 0f, 0f);
+            var obj = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+            
+            //Entity enemy = entityManager.Instantiate(enemyEntityPrefab);
 
-            var obj = Instantiate(enemyPrefab, spawnPositionInside, spawnRotation) as GameObject;
-            var obj2 = Instantiate(enemyPrefab, spawnPositionLeft, spawnRotation) as GameObject;
-            var obj3 = Instantiate(enemyPrefab, spawnPositionRight, spawnRotation) as GameObject;
+            //Translation translation2 = new Translation();
+            //translation2.Value = spawnPosition;
+            //entityManager.SetComponentData(enemy, translation2);
+
         }
 
+       numberOfEnemies += 10;
+
     }
-
-    private void Update()
-    {
-        enemyIncrements();
-    }
-
-
-
-
 }
