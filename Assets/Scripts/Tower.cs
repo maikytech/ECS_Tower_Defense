@@ -7,21 +7,24 @@ using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
     [Header("Shoot")]
-    public float triggerRange;
-    public float timeToShoot = 0.3f;
-    public Transform rotationPart;
-    public Transform shootPosition;
-    public Enemy currentTarget;
-    public Bullet bullet;
-    public List<Enemy> currentTargets = new List<Enemy>();
+    [SerializeField]private float triggerRange;
+    [SerializeField] private float timeToShoot = 0.3f;
+    [SerializeField] private Transform rotationPart;
+    [SerializeField] private Transform shootPosition;
+    [SerializeField] private Enemy currentTarget;
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private List<Enemy> currentTargets = new List<Enemy>();
 
     [Header("Life")]
-    public Image fillLifeImage;
-    private float maxLife = 50;
-    private float currentLife = 0;
-    private bool isDead;
+    [SerializeField] private Image fillLifeImage;
+    [SerializeField] private float maxLife = 50;
+    [SerializeField] private float currentLife = 0;
+    [SerializeField] private bool isDead;
 
-
+    private void Awake()
+    {
+        isDead = false;
+    }
     private void Start()
     {
         currentLife = maxLife;
@@ -29,11 +32,11 @@ public class Tower : MonoBehaviour
     }
     private void Update()
     {
-        EnemyDetection();
-        LookRotation();
-
-        if (Input.GetKeyDown("f"))
-            TakeDamage(1.0f);
+        if(GameManager.GM.isGameOver == false)
+        {
+            EnemyDetection();
+            LookRotation();
+        }
     }
 
     private void EnemyDetection()
@@ -63,8 +66,12 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        var bulletGo = Instantiate(bullet, shootPosition.position, shootPosition.rotation);
-        bulletGo.setBullet(currentTarget);
+        if(isDead == false)
+        {
+            var bulletGo = Instantiate(bullet, shootPosition.position, shootPosition.rotation);
+            bulletGo.setBullet(currentTarget);
+        }
+        
     }
 
     private IEnumerator ShootTimer()
@@ -108,7 +115,10 @@ public class Tower : MonoBehaviour
         isDead = true;
         currentLife = 0;
         fillLifeImage.fillAmount = 0;
-        GameManager.GM.GameOver();
+        GameManager.GM.isGameOver = true;
+        UIManager.uiManager.gameOver.SetActive(true);
+        UIManager.uiManager.restart.SetActive(true);
+        UIManager.uiManager.menu.SetActive(true);
 
     }
 }

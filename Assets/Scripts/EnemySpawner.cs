@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("EnemyIncrements", wavesTime, wavesTime);
+       // InvokeRepeating("EnemyIncrements", wavesTime, wavesTime);
     }
 
     void EnemyIncrements()

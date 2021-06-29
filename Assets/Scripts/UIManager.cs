@@ -6,32 +6,34 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    //This class a static reference to itself to ensure that there will only be
-    //one in exitence. This is often referred to as a singleton design pattern. Other
-    //scripts access this one through its public static methods.
+    public static UIManager uiManager;
 
-    public static UIManager current;
+    public GameObject gameOver;
+    public GameObject restart;
+    public GameObject menu;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOver;
+    [SerializeField] private TextMeshProUGUI scoreText;
+
     private void Awake()
     {
-        if (current != null && current != this)
+        if (uiManager != null && uiManager != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
-        current = this;
+        uiManager = this;
     }
 
     public static void UpdateScore(int score)
     {
-        if (current == null)
+        if (uiManager == null)
             return;
 
-        current.scoreText.text = score.ToString();
+        uiManager.scoreText.text = score.ToString();
     }
+
+
 }

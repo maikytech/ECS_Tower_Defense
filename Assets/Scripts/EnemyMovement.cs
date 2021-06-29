@@ -13,13 +13,17 @@ public class EnemyMovement : MonoBehaviour
     {
         var dir = GameManager.GM.tower.position - transform.position;
         var rootTarget = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rootTarget, GameManager.GM.rotationSpeed * Time.deltaTime);   
+        transform.rotation = Quaternion.Slerp(transform.rotation, rootTarget, GameManager.GM.rotationSpeedEnemy * Time.deltaTime);   
 
     }
 
     private void Update()
     {
-        Movement();
-        LookAt();
+        if(GameManager.GM.isGameOver == false)
+        {
+            Movement();
+            LookAt();
+        }
+        
     }
 }
