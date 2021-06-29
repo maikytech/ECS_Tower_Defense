@@ -3,7 +3,8 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [GenerateAuthoringComponent]
-public class SpeedData : IComponentData
+public class RobotSpeedData : IComponentData
 {
-    public float speed;
+    public float robotSpeed;
+    
 }

@@ -11,7 +11,7 @@ public class RobotRotationSystem : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDebs)
     {
 
-        Entities.ForEach((ref Rotation rotation, in InputData input) =>
+        Entities.ForEach((ref Rotation rotation, in RobotInputData input) =>
         {
             float3 direction = float3.zero;
             direction.xz = input.direction;

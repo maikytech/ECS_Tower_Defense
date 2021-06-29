@@ -14,9 +14,9 @@ public class RobotMovementSystem : JobComponentSystem
 
          Entities
             .WithoutBurst()
-            .ForEach((ref Translation position, in SpeedData speed, in InputData input) =>
+            .ForEach((ref Translation position, in RobotSpeedData speed, in RobotInputData input) =>
             {
-                position.Value.xz += input.direction * speed.speed * deltaTime;
+                position.Value.xz += input.direction * speed.robotSpeed * deltaTime;
 
             }).Run();
 

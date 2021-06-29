@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 [GenerateAuthoringComponent]
-public struct InputData : IComponentData
+public struct RobotInputData : IComponentData
 {
     public float2 direction;   
 }

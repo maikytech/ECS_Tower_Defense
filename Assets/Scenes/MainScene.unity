@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0130eeac039c88d47b1c05bb7365a4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 693711919}
   gameOver: {fileID: 1515883758}
   restart: {fileID: 738291757}
   menu: {fileID: 707186039}
+  scoreText: {fileID: 693711919}
 --- !u!4 &91899365
 Transform:
   m_ObjectHideFlags: 0
@@ -1320,13 +1320,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedEnemy: 5
   rotationSpeedEnemy: 3
-  enemyPrefab: {fileID: 2233541479740938252, guid: 02b0c5bc9232d7e46a600ece1668a2d5, type: 3}
+  enemyPrefab: {fileID: 2233541479740938252, guid: a5fbc98d1e73daa49b6d68f96f5f3219, type: 3}
+  tower: {fileID: 1391986373}
+  isGameOver: 0
   numberOfEnemies: 10
   score: 0
   wavesTime: 3
   startWavesTime: 1
-  isGameOver: 0
-  tower: {fileID: 1391986373}
 --- !u!4 &1089706547
 Transform:
   m_ObjectHideFlags: 0
@@ -1567,6 +1567,9 @@ MonoBehaviour:
   bullet: {fileID: -8579212596507997247, guid: 57223643ce3c531479cadd25d98fe586, type: 3}
   currentTargets: []
   fillLifeImage: {fileID: 1188275331}
+  maxLife: 50
+  currentLife: 0
+  isDead: 0
 --- !u!114 &1391986375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,13 +2201,43 @@ GameObject:
   - component: {fileID: 1908002239}
   - component: {fileID: 1908002238}
   - component: {fileID: 1908002237}
+  - component: {fileID: 1908002235}
+  - component: {fileID: 1908002236}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &1908002235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908002234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c1a17339a244d4f8b483f225c851b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction:
+    x: 0
+    y: 0
+--- !u!114 &1908002236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908002234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c438219747831b49b949fe3a1791886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotSpeed: 5
 --- !u!114 &1908002237
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class InputSystem : JobComponentSystem
     {
         float2 dir = math.float2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        Entities.ForEach((ref InputData input) =>
+        Entities.ForEach((ref RobotInputData input) =>
         {
             input.direction = dir;
 

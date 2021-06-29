@@ -13,12 +13,7 @@ public class EnemyMovementSystem : JobComponentSystem
  
         JobHandle jobHandle = Entities.ForEach((ref Translation translation, in EnemyData enemyData) => {
 
-            //transform.position = Vector3.MoveTowards(transform.position, wayPoints[targetIndex].position, speed * Time.deltaTime);
-
-            //translation.Value.z = (translation.Value.z + (enemyData.enemySpeed2 * deltaTime) * -1f);
-
-            translation.Value.x = (translation.Value.x + (enemyData.enemySpeed2 * deltaTime) );
-
+            translation.Value.z = (translation.Value.z + (enemyData.enemySpeed2 * deltaTime) * -1f);
 
         }).Schedule(inputDeps);
 

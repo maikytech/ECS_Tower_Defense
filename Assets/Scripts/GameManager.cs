@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
         numberOfEnemies = 10;
         score = 0;
 
-        /*
+        
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
+        settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, new BlobAssetStore());
         enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(enemyPrefab, settings);
 
-        */
+        
     }
 
     private void Start()
@@ -79,17 +79,16 @@ public class GameManager : MonoBehaviour
             Vector3 spawnPosition = new Vector3(xValue, 0.44f, zValue);
             Quaternion spawnRotation = Quaternion.Euler(0f, 0f, 0f);
 
-            var obj = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+            //var obj = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
 
             if (isGameOver)
                 return;
 
-            /*
             Entity enemy = entityManager.Instantiate(enemyEntityPrefab);
             Translation translation2 = new Translation();
             translation2.Value = spawnPosition;
             entityManager.SetComponentData(enemy, translation2);
-            */
+
         }
 
         numberOfEnemies += 10;
