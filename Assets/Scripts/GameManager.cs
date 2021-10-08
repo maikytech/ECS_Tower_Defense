@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float wavesTime = 2f;
     [SerializeField] private float startWavesTime = 1f;
     
-    
-
     //DOTS Variables
     private EntityManager entityManager;
     private Entity enemyEntityPrefab;
@@ -48,12 +46,9 @@ public class GameManager : MonoBehaviour
         numberOfEnemies = 10;
         score = 0;
 
-        
         entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, new BlobAssetStore());
         enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(enemyPrefab, settings);
-
-        
     }
 
     private void Start()

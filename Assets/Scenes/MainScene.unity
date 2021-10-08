@@ -1563,7 +1563,7 @@ MonoBehaviour:
   timeToShoot: 0.2
   rotationPart: {fileID: 927033128}
   shootPosition: {fileID: 1952019633}
-  currentTarget: {fileID: 0}
+  currentTarget: {fileID: 278597203972546642, guid: a5fbc98d1e73daa49b6d68f96f5f3219, type: 3}
   bullet: {fileID: -8579212596507997247, guid: 57223643ce3c531479cadd25d98fe586, type: 3}
   currentTargets: []
   fillLifeImage: {fileID: 1188275331}
